@@ -1,0 +1,21 @@
+import random
+import string
+
+def generate_random_word(length):
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for _ in range(length))
+
+def create_random_book(num_chapters, words_per_chapter):
+    book = []
+    for chapter in range(1, num_chapters + 1):
+        chapter_title = f"Глава {chapter}"
+        chapter_content = " ".join(generate_random_word(5) for _ in range(words_per_chapter))
+        chapter_text = f"{chapter_title}\n{chapter_content}\n\n"
+        book.append(chapter_text)
+    return "\n".join(book)
+
+# Создаем случайную книгу из 3 глав с 10 словами в каждой
+random_book = create_random_book(num_chapters=3, words_per_chapter=10)
+
+# Выводим результат
+print(random_book)
